@@ -5,7 +5,7 @@ public interface ManagerService<T> {
 
     void print();
 
-    T findById(int id);
+    int findById(int id);
 
     void update(T t, int id);
     void deleteById(T t);

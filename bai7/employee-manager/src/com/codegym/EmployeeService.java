@@ -18,8 +18,13 @@ public class EmployeeService implements ManagerService<Employee>{
     }
 
     @Override
-    public Employee findById(int id) {
-        return null;
+    public int findById(int id) {
+        for (int i = 0; i < size; i++) {
+            if (id==employeesList[i].getId()){
+                return i;
+            }
+        }
+        return 0;
     }
 
     @Override
