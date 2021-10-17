@@ -8,7 +8,9 @@ public interface ManagerService<T> {
     int findById(int id);
 
     void update(T t, int id);
-    void deleteById(T t);
+        void sort();
+
+    void deleteById(int id);
 
 
 }

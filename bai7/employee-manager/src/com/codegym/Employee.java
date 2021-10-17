@@ -1,6 +1,6 @@
 package com.codegym;
 
-public class Employee extends Person {
+public class Employee extends Person implements Comparable<Employee> {
     private  double salary;
 
     public Employee(int id, String name, int age, double salary) {
@@ -18,5 +18,10 @@ public class Employee extends Person {
                 "salary=" + salary +
                 '}'
                 +super.toString();
+    }
+
+    @Override
+    public int compareTo(Employee o) {
+        return this.getId() -o.getId();
     }
 }

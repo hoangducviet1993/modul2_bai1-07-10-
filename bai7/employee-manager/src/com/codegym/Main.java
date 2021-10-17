@@ -28,6 +28,11 @@ public class Main {
         Boss boss3 = new Boss(3,"Hoàng Việt",27,5);
         bossService1.update(boss3,1);
         bossService1.print();
-
+        System.out.println("Xắp xếp Nhân Viên: ");
+        employeeService1.sort();
+        employeeService1.print();
+        System.out.println("Xóa Nhân Viên: ");
+        employeeService1.deleteById(5);
+        employeeService1.print();
     }
 }

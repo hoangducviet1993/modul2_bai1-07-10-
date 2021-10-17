@@ -34,7 +34,13 @@ public class BossService implements ManagerService<Boss> {
     }
 
     @Override
-    public void deleteById(Boss boss) {
+    public void sort() {
 
     }
+
+    @Override
+    public void deleteById(int id) {
+        bossList[findById(id)]=null;
+    }
+
 }

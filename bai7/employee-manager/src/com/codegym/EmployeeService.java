@@ -1,5 +1,7 @@
 package com.codegym;
 
+import java.util.Arrays;
+
 public class EmployeeService implements ManagerService<Employee>{
     private Employee[] employeesList = new Employee[5];
     private int size =0;
@@ -29,11 +31,16 @@ public class EmployeeService implements ManagerService<Employee>{
 
     @Override
     public void update(Employee employee, int id) {
-
+        employeesList[findById(id)] = employee;
     }
 
     @Override
-    public void deleteById(Employee employee) {
+    public void sort() {
+        Arrays.sort(employeesList);
+    }
 
+    @Override
+    public void deleteById(int id) {
+        employeesList[findById(id)] = null;
     }
 }
