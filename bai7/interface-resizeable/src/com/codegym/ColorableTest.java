@@ -12,7 +12,7 @@ public class ColorableTest {
         for (Shape shape : shapes) {
             System.out.println(shape);
             if (shape instanceof Square) {
-                ((Square) shape).howToColor();
+//                ((Square) shape).howToColor();
             }
 
         }

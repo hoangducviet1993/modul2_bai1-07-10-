@@ -9,6 +9,7 @@ public class ResizeableTest {
         Square square = new Square();
         Shape[] shapes = {circle, rectangle, square};
         System.out.println("Before resize: ");
+
         for (Shape shape : shapes) {
             System.out.println(shape);
         }
