@@ -1,13 +1,13 @@
 package service;
 
-import model.StudentScore;
+import model.Student;
 
 import java.util.ArrayList;
 
-public class StudentManager implements StudentService<StudentScore> {
-    private ArrayList<StudentScore> listStudentScore;
+public class StudentManager implements PersonService<Student> {
+    private ArrayList<Student> listStudentScore;
 
-    public StudentManager(ArrayList<StudentScore> listStudentScore) {
+    public StudentManager(ArrayList<Student> listStudentScore) {
         this.listStudentScore = listStudentScore;
     }
 
@@ -16,11 +16,11 @@ public class StudentManager implements StudentService<StudentScore> {
 
     }
 
-    public ArrayList<StudentScore> getListStudentScore() {
+    public ArrayList<Student> getListStudentScore() {
         return listStudentScore;
     }
 
-    public void setListStudentScore(ArrayList<StudentScore> listStudentScore) {
+    public void setListStudentScore(ArrayList<Student> listStudentScore) {
         this.listStudentScore = listStudentScore;
     }
 
@@ -35,13 +35,13 @@ public class StudentManager implements StudentService<StudentScore> {
     }
 
     @Override
-    public void add(StudentScore studentScore) {
+    public void add(Student studentScore) {
         listStudentScore.add(studentScore);
 
     }
 
     @Override
-    public void update(StudentScore studentScore, int code) {
+    public void update(Student studentScore, int code) {
         int index = findIndexByCode(code);
         listStudentScore.set(index, studentScore);
 
@@ -56,7 +56,7 @@ public class StudentManager implements StudentService<StudentScore> {
 
     @Override
     public void print() {
-        for (StudentScore studentScore : listStudentScore) {
+        for (Student studentScore : listStudentScore) {
             System.out.println(studentScore);
         }
         System.out.println("---------------------------------------------");
@@ -71,7 +71,7 @@ public class StudentManager implements StudentService<StudentScore> {
     @Override
     public double sumScore() {
         double sum = 0;
-        for (StudentScore studentScore : listStudentScore) {
+        for (Student studentScore : listStudentScore) {
             sum += studentScore.getScore();
         }
         return sum;

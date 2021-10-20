@@ -1,6 +1,6 @@
 package com.codegym;
 
-import model.StudentScore;
+import model.Student;
 import service.StudentManager;
 
 import java.util.Scanner;
@@ -8,11 +8,11 @@ import java.util.Scanner;
 public class Menu {
     public static void main(String[] args) {
         StudentManager studentManager = new StudentManager();
-        studentManager.add(new StudentScore("Hoàng Việt", 27, 3, 100));
-        studentManager.add(new StudentScore("Nguyễn Văn A", 21, 15, 85));
-        studentManager.add(new StudentScore("Nguyễn Văn B", 19, 23, 55));
-        studentManager.add(new StudentScore("Nguyễn Văn C", 20, 9, 71));
-        studentManager.add(new StudentScore("Nguyễn Văn D", 22, 6, 63));
+        studentManager.add(new Student("Hoàng Việt", 27, 3, 100));
+        studentManager.add(new Student("Nguyễn Văn A", 21, 15, 85));
+        studentManager.add(new Student( "Nguyễn Văn B", 19, 23, 55));
+        studentManager.add(new Student("Nguyễn Văn C", 20, 9, 71));
+        studentManager.add(new Student("Nguyễn Văn D", 22, 6, 63));
         System.out.println("Danh sách học viên: ");
         studentManager.print();
         Scanner scanner = new Scanner(System.in);
@@ -44,7 +44,7 @@ public class Menu {
                     int code = scanner.nextInt();
                     System.out.println("Nhập điểm học viên");
                     double scores = scanner.nextDouble();
-                    studentManager.add(new StudentScore(name, age, code, scores));
+                    studentManager.add(new Student(name, age, code, scores));
                     System.out.println("Danh Sách học viên : ");
                     studentManager.print();
                     break;
@@ -59,7 +59,7 @@ public class Menu {
                     int codeNew = scanner.nextInt();
                     System.out.println("Nhập điểm học viên");
                     double scoresNew = scanner.nextDouble();
-                    studentManager.update(new StudentScore(nameNew, ageNew, codeNew, scoresNew),codeChance);
+                    studentManager.update(new Student(nameNew, ageNew, codeNew, scoresNew),codeChance);
                     System.out.println("Danh Sách học viên : ");
                     studentManager.print();
                     break;

@@ -1,16 +1,16 @@
 package model;
 
-public class StudentScore extends Student{
+public class Student extends Person {
     private double scores;
 
-    public StudentScore() {
+    public Student() {
     }
 
-    public StudentScore(double scores) {
+    public Student(double scores) {
         this.scores = scores;
     }
 
-    public StudentScore(String name, int age, int code, double scores) {
+    public Student(String name, int age, int code, double scores) {
         super(name, age, code);
         this.scores = scores;
     }
@@ -25,7 +25,7 @@ public class StudentScore extends Student{
 
     @Override
     public String toString() {
-        return "StudentScore{" +
+        return "Student{" +
                 super.toString()+
                 "scores=" + scores +
                 '}';

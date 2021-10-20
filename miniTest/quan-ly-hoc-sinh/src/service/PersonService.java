@@ -1,6 +1,6 @@
 package service;
 
-public interface StudentService<T> {
+public interface PersonService<T> {
     int findIndexByCode(int code);
 
     void add(T t);
