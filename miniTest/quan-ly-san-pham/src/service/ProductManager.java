@@ -45,8 +45,8 @@ private ArrayList<Product> listProduct;
 
     @Override
     public void print() {
-        for (int i = 0; i < listProduct.size(); i++) {
-            System.out.println(listProduct.get(i));
+        for (Product product : listProduct) {
+            System.out.println(product);
         }
         System.out.println("---------------------------------------------");
 
