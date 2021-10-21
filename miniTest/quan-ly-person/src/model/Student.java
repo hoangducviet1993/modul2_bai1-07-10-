@@ -10,8 +10,8 @@ public class Student extends Person {
         this.scores = scores;
     }
 
-    public Student(String name, int age, int code, double scores) {
-        super(name, age, code);
+    public Student(String name, int age, double scores) {
+        super(name, age);
         this.scores = scores;
     }
 

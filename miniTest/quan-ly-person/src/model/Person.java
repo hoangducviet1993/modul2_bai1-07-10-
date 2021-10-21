@@ -2,16 +2,16 @@ package model;
 
 public class Person {
     private String name;
-    int age;
-    int code;
+   private int age;
+     private int code =0;
 
     public Person() {
     }
 
-    public Person(String name, int age, int code) {
+    public Person(String name, int age) {
         this.name = name;
         this.age = age;
-        this.code = code;
+
 
     }
 

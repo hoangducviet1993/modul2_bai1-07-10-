@@ -74,7 +74,7 @@ public class Menu {
                     int codeFind = scanner.nextInt();
                     int index = studentManager.findIndexByCode(codeFind);
                     System.out.println("Học Viên vị trí: " + index);
-                    System.out.println(studentManager.getListStudentScore().get(index));
+                    System.out.println(studentManager.getListStudent().get(index));
                     break;
                 case 5:
                     System.out.println("Học viên được sắp xếp theo mã: ");

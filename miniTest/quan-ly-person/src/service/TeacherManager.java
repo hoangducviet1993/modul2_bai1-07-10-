@@ -1,4 +1,4 @@
 package service;
 
-public class TeacherManager {
+public class TeacherManager extends PersonManager{
 }

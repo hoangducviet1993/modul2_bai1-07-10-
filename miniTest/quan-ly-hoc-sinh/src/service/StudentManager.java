@@ -16,11 +16,11 @@ public class StudentManager implements PersonService<Student> {
 
     }
 
-    public ArrayList<Student> getListStudentScore() {
+    public ArrayList<Student> getListStudent() {
         return listStudentScore;
     }
 
-    public void setListStudentScore(ArrayList<Student> listStudentScore) {
+    public void setListStudent(ArrayList<Student> listStudentScore) {
         this.listStudentScore = listStudentScore;
     }
 

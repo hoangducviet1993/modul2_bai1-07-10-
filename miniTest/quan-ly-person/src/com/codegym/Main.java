@@ -8,11 +8,12 @@ import service.StudentManager;
 import java.util.Scanner;
 
 public class Main {
-
+   public static PersonManager personManager = new PersonManager();
     public static void main(String[] args) {
         // write your code here
-        PersonManager personManager = new PersonManager();
-        personManager.add(new Student("Hoàng Việt", 27, 3, 100));
+
+//        personManager.add(new Student("Hoàng Việt", 27, 3, 100));
+//        personManager.print();
         Scanner scanner = new Scanner(System.in);
         int choice = -1;
         while (choice != 0){
@@ -21,9 +22,18 @@ public class Main {
             switch (choice){
                 case 1:
                     inputStudent();
-
+                    break;
+                case 2:
+                    inputTeacher();
+                    break;
+                case 8:
+                personManager.print();
+                break;
+                case 0:
+                    System.exit(0);
             }
         }
+
     }
 
     public static void menu() {
@@ -46,16 +56,12 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Thêm học viên: ");
         System.out.println("Nhập tên học viên: ");
-        scanner.nextLine();
         String name = scanner.nextLine();
         System.out.println("Nhập tuổi học viên:  ");
         int age = scanner.nextInt();
-        System.out.println("Nhập code học viên:  ");
-        int code = scanner.nextInt();
         System.out.println("Nhập điểm học viên");
         double scores = scanner.nextDouble();
-        PersonManager personManager =new PersonManager();
-        personManager.add(new Student(name,age,code,scores));
+        personManager.add(new Student(name,age,scores));
         personManager.print();
 
     }
@@ -64,17 +70,13 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Thêm giáo viên: ");
         System.out.println("Nhập tên giáo viên: ");
-        scanner.nextLine();
         String name = scanner.nextLine();
         System.out.println("Nhập tuổi giáo viên:  ");
         int age = scanner.nextInt();
-        System.out.println("Nhập code giáo viên:  ");
-        int code = scanner.nextInt();
         System.out.println("Nhập môn học giáo viên dạy: ");
         scanner.nextLine();
         String subject = scanner.nextLine();
-        PersonManager personManager =new PersonManager();
-        personManager.add(new Teacher(name,age,code,subject));
+        personManager.add(new Teacher(name,age,subject));
         personManager.print();
 
     }

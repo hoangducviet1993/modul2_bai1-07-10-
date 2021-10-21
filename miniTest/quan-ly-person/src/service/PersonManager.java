@@ -4,8 +4,9 @@ import model.Person;
 
 import java.util.ArrayList;
 
-public class PersonManager implements PersonService<Person>  {
+public class PersonManager implements PersonService<Person> {
     private ArrayList<Person> people;
+    private int count = 0;
 
     public PersonManager(ArrayList<Person> people) {
         this.people = people;
@@ -24,10 +25,18 @@ public class PersonManager implements PersonService<Person>  {
         this.people = people;
     }
 
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
     @Override
     public int findIndexByCode(int code) {
         for (int i = 0; i < people.size(); i++) {
-            if(people.get(i).getCode() == code){
+            if (people.get(i).getCode() == code) {
                 return i;
             }
         }
@@ -36,13 +45,15 @@ public class PersonManager implements PersonService<Person>  {
 
     @Override
     public void add(Person person) {
-            people.add(person);
+        person.setCode(count);
+        count++;
+        people.add(person);
     }
 
     @Override
     public void update(Person person, int code) {
-        int index= findIndexByCode(code);
-        people.set(index,person);
+        int index = findIndexByCode(code);
+        people.set(index, person);
 
     }
 
@@ -55,7 +66,7 @@ public class PersonManager implements PersonService<Person>  {
 
     @Override
     public void print() {
-        for (Person person: people) {
+        for (Person person : people) {
             System.out.println(person);
         }
         System.out.println("_____________________________");
@@ -63,7 +74,7 @@ public class PersonManager implements PersonService<Person>  {
 
     @Override
     public void sort() {
-    people.sort(((o1, o2) ->(o1.getCode() - o2.getCode())));
+        people.sort(((o1, o2) -> (o1.getCode() - o2.getCode())));
     }
 
     @Override
