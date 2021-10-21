@@ -33,16 +33,16 @@ public class Main {
     }
 
     public static void menu() {
-        System.out.println("Menu");
-        System.out.println("1.Thêm học viên: ");
-        System.out.println("2.Thêm giáo viên: ");
-        System.out.println("3.Sủa thông tin học viên theo code: ");
-        System.out.println("4.Xóa học viên theo code: ");
+        System.out.println("============Menu============");
+        System.out.println("1. Thêm học viên: ");
+        System.out.println("2. Thêm giáo viên: ");
+        System.out.println("3. Sủa thông tin học viên theo code: ");
+        System.out.println("4. Xóa học viên theo code: ");
         System.out.println("5. Tìm kiếm học viên: ");
         System.out.println("6. Sắp xếp học viên theo điểm số: ");
         System.out.println("7. Tổng điểm học viên: ");
-        System.out.println("8.In danh sách học viên: ");
-        System.out.println("0.Thoát");
+        System.out.println("8. In danh sách học viên: ");
+        System.out.println("0. Thoát");
         System.out.println("______________________________________");
         System.out.println();
         System.out.println("Nhập lựa chọn: ");
