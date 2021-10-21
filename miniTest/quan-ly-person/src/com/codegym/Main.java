@@ -10,10 +10,6 @@ import java.util.Scanner;
 public class Main {
    public static PersonManager personManager = new PersonManager();
     public static void main(String[] args) {
-        // write your code here
-
-//        personManager.add(new Student("Hoàng Việt", 27, 3, 100));
-//        personManager.print();
         Scanner scanner = new Scanner(System.in);
         int choice = -1;
         while (choice != 0){
@@ -45,11 +41,11 @@ public class Main {
         System.out.println("5. Tìm kiếm học viên: ");
         System.out.println("6. Sắp xếp học viên theo điểm số: ");
         System.out.println("7. Tổng điểm học viên: ");
-        System.out.println("8.In danh sach học viên: ");
-        System.out.println("0.Exit");
+        System.out.println("8.In danh sách học viên: ");
+        System.out.println("0.Thoát");
         System.out.println("______________________________________");
         System.out.println();
-        System.out.println("Enter choice: ");
+        System.out.println("Nhập lựa chọn: ");
     }
 
     public static void inputStudent() {

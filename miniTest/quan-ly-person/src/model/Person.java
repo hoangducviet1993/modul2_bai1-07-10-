@@ -2,8 +2,8 @@ package model;
 
 public class Person {
     private String name;
-   private int age;
-     private int code =0;
+    private int age;
+    private int code = 0;
 
     public Person() {
     }
