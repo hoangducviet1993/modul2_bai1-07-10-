@@ -10,7 +10,7 @@ public class Main {
         dictionary.print();
         dictionary.add("Lan Anh", "Rei");
         dictionary.print();
-        System.out.println(dictionary.search("Lan Anh"));
+        dictionary.search();
     }
 
 }

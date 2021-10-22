@@ -2,6 +2,7 @@ package model;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.Set;
 
 public class Dictionary {
@@ -26,8 +27,19 @@ public class Dictionary {
         myDictionary.put(key, value);
     }
 
-    public String search(String key) {
-        return myDictionary.get(key);
+    public void search() {
+        Scanner scanner= new Scanner(System.in);
+        String findKey = scanner.nextLine();
+        if (checkKey(findKey)){
+            System.out.println(myDictionary.get(findKey));
+        }else {
+            System.out.println("no");
+        }
+
+    }
+    public boolean checkKey(String key){
+        return myDictionary.containsKey(key);
+
     }
 
     public void print() {
@@ -37,5 +49,7 @@ public class Dictionary {
         }
         System.out.println("------------------");
     }
+    public void typeKey(){
 
+    }
 }
