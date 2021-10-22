@@ -10,26 +10,31 @@ public class Dictionary {
 
     public Dictionary() {
         myDictionary = new HashMap<>();
-        myDictionary.put("Red", "Màu Đỏ");
-        myDictionary.put("Blue", "Xanh Dương");
-        myDictionary.put("White", "Trắng");
-        myDictionary.put("Green", "Xanh");
-        myDictionary.put("Yellow", "Vàng");
-        myDictionary.put("Pink", "Màu Hồng");
-        myDictionary.put("Black", "Đen");
-        myDictionary.put("Orange", "Màu Da Cam");
-        myDictionary.put("Browm", "Màu Nâu");
+        myDictionary.put("red", "Màu Đỏ");
+        myDictionary.put("blue", "Xanh Dương");
+        myDictionary.put("white", "Trắng");
+        myDictionary.put("green", "Xanh");
+        myDictionary.put("yellow", "Vàng");
+        myDictionary.put("pink", "Màu Hồng");
+        myDictionary.put("black", "Đen");
+        myDictionary.put("orange", "Màu Da Cam");
+        myDictionary.put("brown", "Màu Nâu");
         myDictionary.put("Purple", "Tím");
 
     }
 
-    public void add(String key, String value) {
-        myDictionary.put(key, value);
+    public void add() {
+        System.out.println("Nhập từ tiếng Anh: ");
+        String addKey = typePhrase();
+        System.out.println("Nhập nghĩa: ");
+        String addValue = typePhrase();
+        myDictionary.put(addKey, addValue);
+        System.out.println("Đã thêm!");
     }
 
     public void search() {
-        Scanner scanner= new Scanner(System.in);
-        String findKey = scanner.nextLine();
+        System.out.println("Nhập từ cần tìm kiếm: ");
+        String findKey = typePhrase();
         if (checkKey(findKey)){
             System.out.println(myDictionary.get(findKey));
         }else {
@@ -49,7 +54,9 @@ public class Dictionary {
         }
         System.out.println("------------------");
     }
-    public void typeKey(){
-
+    public String typePhrase(){
+        Scanner scanner =new Scanner(System.in);
+        String findKey = scanner.nextLine();
+                return findKey.trim().toLowerCase();
     }
 }

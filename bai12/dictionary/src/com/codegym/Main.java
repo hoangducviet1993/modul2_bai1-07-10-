@@ -8,7 +8,7 @@ public class Main {
         // write your code here
         Dictionary dictionary = new Dictionary();
         dictionary.print();
-        dictionary.add("Lan Anh", "Rei");
+        dictionary.add();
         dictionary.print();
         dictionary.search();
     }
