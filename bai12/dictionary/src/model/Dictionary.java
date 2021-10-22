@@ -19,7 +19,7 @@ public class Dictionary {
         myDictionary.put("black", "Đen");
         myDictionary.put("orange", "Màu Da Cam");
         myDictionary.put("brown", "Màu Nâu");
-        myDictionary.put("Purple", "Tím");
+        myDictionary.put("purple", "Tím");
 
     }
 
@@ -35,14 +35,15 @@ public class Dictionary {
     public void search() {
         System.out.println("Nhập từ cần tìm kiếm: ");
         String findKey = typePhrase();
-        if (checkKey(findKey)){
+        if (checkKey(findKey)) {
             System.out.println(myDictionary.get(findKey));
-        }else {
+        } else {
             System.out.println("no");
         }
 
     }
-    public boolean checkKey(String key){
+
+    public boolean checkKey(String key) {
         return myDictionary.containsKey(key);
 
     }
@@ -54,9 +55,10 @@ public class Dictionary {
         }
         System.out.println("------------------");
     }
-    public String typePhrase(){
-        Scanner scanner =new Scanner(System.in);
+
+    public String typePhrase() {
+        Scanner scanner = new Scanner(System.in);
         String findKey = scanner.nextLine();
-                return findKey.trim().toLowerCase();
+        return findKey.trim().toLowerCase();
     }
 }
