@@ -3,6 +3,7 @@ package manager;
 
 import model.Car;
 import model.Motorbike;
+import model.Vehicle;
 import service.CarManager;
 import service.MotorbikeManager;
 import service.VehicleManager;
@@ -78,4 +79,38 @@ public class MenuManager {
         return car1;
     }
 
+    public static void findVehicle() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nhập Id phương tiện cần tim: ");
+        int id = scanner.nextInt();
+        vehicleManager.findById(id);
+    }
+
+    public static void deleteVehicle() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nhập Id phương tiện cần xóa: ");
+        int id = scanner.nextInt();
+        vehicleManager.delete(id);
+    }
+
+    public static void updateVehicle() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nhập Id phương tiện cần sửa: ");
+        int id = scanner.nextInt();
+        int index = vehicleManager.findIndexById(id);
+        if (index!=-1){
+            if (vehicleManager.getVehicleList().get(index) instanceof Motorbike) {
+                Motorbike motorbike = MotorbikeManager.createMotorbike();
+                vehicleManager.update(motorbike,id);
+                motorbike.setId(id);
+            }if(vehicleManager.getVehicleList().get(index) instanceof Car){
+                Car car = CarManager.createCar();
+                vehicleManager.update(car,id);
+                car.setId(id);
+            }
+        } else{
+            System.out.println("Id không tồn tại:");
+        }
+
+    }
 }

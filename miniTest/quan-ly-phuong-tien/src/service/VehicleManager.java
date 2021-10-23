@@ -1,5 +1,7 @@
 package service;
 
+import model.Car;
+import model.Motorbike;
 import model.Vehicle;
 
 import java.util.ArrayList;
