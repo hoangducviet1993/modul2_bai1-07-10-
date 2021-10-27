@@ -15,9 +15,9 @@ public class VehicleManager implements VehicleService<Vehicle> {
         this.vehicleList = new ArrayList<>();
     }
 
-    public VehicleManager(ArrayList<Vehicle> motorbikeList) {
-        this.vehicleList = motorbikeList;
-    }
+//    public VehicleManager(ArrayList<Vehicle> motorbikeList) {
+//        this.vehicleList = motorbikeList;
+//    }
 
     @Override
     public void add(Vehicle vehicle) {
@@ -37,9 +37,9 @@ public class VehicleManager implements VehicleService<Vehicle> {
     }
 
     @Override
-    public void update(Vehicle motorbike, int id) {
+    public void update(Vehicle vehicle, int id) {
         if (findIndexById(id) != -1) {
-            vehicleList.set(findIndexById(id), motorbike);
+            vehicleList.set(findIndexById(id), vehicle);
         } else {
             System.out.println("Không có xe cần sửa theo ID đã nhập: ");
         }
