@@ -54,5 +54,5 @@ public class StudentManager extends PersonManager {
             }
         }
         System.out.println(studentList.get(index));
-
+    }
 }
