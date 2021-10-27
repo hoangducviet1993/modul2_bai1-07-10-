@@ -44,5 +44,15 @@ public class StudentManager extends PersonManager {
         studentList.sort((o1, o2) -> (int) (o1.getMediumScore() - o2.getMediumScore()));
 
     }
+    public void findMaxAvgScore() {
+        double max = studentList.get(0).getMediumScore();
+        int index = 0;
+        for (int i = 0; i < studentList.size(); i++) {
+            if (max < studentList.get(i).getMediumScore()) {
+                max = studentList.get(i).getMediumScore();
+                index = i;
+            }
+        }
+        System.out.println(studentList.get(index));
 
 }
