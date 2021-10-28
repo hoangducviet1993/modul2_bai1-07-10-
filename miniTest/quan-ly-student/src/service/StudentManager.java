@@ -13,7 +13,7 @@ public class StudentManager extends PersonManager {
         this.studentList = new ArrayList<>();
     }
 
-    public static Student createStudent() {
+    public static Student createStudent() throws NumberFormatException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập Thông Tin Sinh Viên: ");
         System.out.println("______________");
