@@ -8,6 +8,7 @@ import service.CarManager;
 import service.MotorbikeManager;
 import service.VehicleManager;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -25,6 +26,8 @@ public class MenuManager {
         System.out.println("6. Xóa phương tiện: ");
         System.out.println("7. Sửa phương tiện: ");
         System.out.println("8. Sắp xếp phương tiện");
+        System.out.println("9. Rei xinh đẹp");
+        System.out.println("10. Rei Dog");
         System.out.println("0. Thoát: ");
         System.out.println("Nhập sự lựa chọn");
     }
@@ -98,19 +101,36 @@ public class MenuManager {
         System.out.println("Nhập Id phương tiện cần sửa: ");
         int id = scanner.nextInt();
         int index = vehicleManager.findIndexById(id);
-        if (index!=-1){
+        if (index != -1) {
             if (vehicleManager.getVehicleList().get(index) instanceof Motorbike) {
                 Motorbike motorbike = MotorbikeManager.createMotorbike();
-                vehicleManager.update(motorbike,id);
+                vehicleManager.update(motorbike, id);
                 motorbike.setId(id);
-            }if(vehicleManager.getVehicleList().get(index) instanceof Car){
+            }
+            if (vehicleManager.getVehicleList().get(index) instanceof Car) {
                 Car car = CarManager.createCar();
-                vehicleManager.update(car,id);
+                vehicleManager.update(car, id);
                 car.setId(id);
             }
-        } else{
+        } else {
             System.out.println("Id không tồn tại:");
         }
 
+    }
+
+    public static void writeCarToFile() throws IOException {
+        CarManager carList = lisCar(vehicleManager);
+        carList.writeCarList("carlist.csv");
+    }
+
+    public static void printFromFile() throws IOException {
+        CarManager carList = lisCar(vehicleManager);
+        carList.readCarList("carlist.csv");
+        carList.print();
+    }
+    public static void sortCarByPrice(){
+        CarManager carList = lisCar(vehicleManager);
+        carList.sortByPrice();
+        carList.print();
     }
 }

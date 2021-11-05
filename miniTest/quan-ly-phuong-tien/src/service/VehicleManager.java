@@ -55,10 +55,6 @@ public class VehicleManager implements VehicleService<Vehicle> {
         }
     }
 
-    @Override
-    public void sort() {
-
-    }
 
     @Override
     public void print() {
@@ -87,4 +83,5 @@ public class VehicleManager implements VehicleService<Vehicle> {
     public int getSize(){
         return vehicleList.size();
     }
+
 }

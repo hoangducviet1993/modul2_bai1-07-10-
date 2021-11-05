@@ -5,20 +5,21 @@ import model.Car;
 import model.Motorbike;
 import service.VehicleManager;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import static manager.MenuManager.*;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // write your code here
         Scanner scanner = new Scanner(System.in);
         int choice;
         while (true) {
             showMenu();
             choice = scanner.nextInt();
-            switch (choice){
+            switch (choice) {
                 case 1:
                     MenuManager.addVehicle();
                     break;
@@ -39,6 +40,15 @@ public class Main {
                     break;
                 case 7:
                     MenuManager.updateVehicle();
+                    break;
+                case 8:
+                    MenuManager.sortCarByPrice();
+                    break;
+                case 9:
+                    MenuManager.writeCarToFile();
+                    break;
+                case 10:
+                    MenuManager.printFromFile();
                     break;
                 case 0:
                     System.exit(0);

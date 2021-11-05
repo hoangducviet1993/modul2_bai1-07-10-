@@ -1,6 +1,6 @@
 package model;
 
-public class Car extends Vehicle {
+public class Car extends Vehicle implements Comparable<Car> {
     private int seats;
 
     public Car() {
@@ -22,8 +22,13 @@ public class Car extends Vehicle {
     @Override
     public String toString() {
         return "Car{" +
-                super.toString()+
+                super.toString() +
                 "seats=" + seats +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return getPrice()-o.getPrice();
     }
 }

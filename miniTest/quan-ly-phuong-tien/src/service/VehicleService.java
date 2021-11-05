@@ -5,7 +5,6 @@ public interface VehicleService<T> {
     int findIndexById(int id);
     void update(T t,int id);
     void delete(int id);
-    void sort ();
     void print();
     void findById(int id);
 

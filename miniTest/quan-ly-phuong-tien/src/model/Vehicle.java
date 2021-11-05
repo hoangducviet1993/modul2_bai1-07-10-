@@ -4,7 +4,7 @@ public class Vehicle {
     private String brand;
     private String color;
     private int price;
-    private int id =0;
+    private int id = 0;
 
     public Vehicle() {
     }
@@ -14,6 +14,7 @@ public class Vehicle {
         this.color = color;
         this.price = price;
     }
+
 
     public String getBrand() {
         return brand;
