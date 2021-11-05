@@ -1,6 +1,7 @@
 package model;
 
 public class Admin {
+    private int id =0;
     private String name;
     private int age;
     private int phoneNumber;
@@ -14,6 +15,14 @@ public class Admin {
         this.age = age;
         this.phoneNumber = phoneNumber;
         this.email = email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -51,7 +60,8 @@ public class Admin {
     @Override
     public String toString() {
         return "Admin{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", age=" + age +
                 ", phoneNumber=" + phoneNumber +
                 ", email='" + email + '\'' +

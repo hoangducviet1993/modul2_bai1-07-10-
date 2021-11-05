@@ -1,7 +1,7 @@
 package model;
 
 public class Room {
-    private String roomId;
+    private int roomId;
     private boolean Status;
     private int numberOfBeds;
     private int numberOfToilet;
@@ -10,7 +10,7 @@ public class Room {
     public Room() {
     }
 
-    public Room(String id, boolean status, int numberOfBeds, int numberOfToilet, double price) {
+    public Room(int id, boolean status, int numberOfBeds, int numberOfToilet, double price) {
         this.roomId = id;
         Status = status;
         this.numberOfBeds = numberOfBeds;
@@ -18,11 +18,11 @@ public class Room {
         this.price = price;
     }
 
-    public String getId() {
+    public int getId() {
         return roomId;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.roomId = id;
     }
 
