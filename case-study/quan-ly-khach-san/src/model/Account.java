@@ -1,60 +1,42 @@
 package model;
 
-import java.util.TreeMap;
+import menu.MenuManager;
+import service.manage.UserManager;
 
-public class Account extends Admin{
-    private TreeMap<String,String> accountMap;
-    public Account(){
-        accountMap = new TreeMap<>();
+import java.util.Scanner;
+
+public class Account {
+    public static void register() {
+        UserManager.getUserList();
+        UserManager.add(UserManager.createUse());
     }
 
-    public TreeMap<String, String> getAccountMap() {
-        return accountMap;
+    public static boolean login(String username,String password){
+        int index = UserManager.findIndexByUserName(username);
+        return UserManager.getUserList().get(index).getPassword().equals(password);
     }
-
-    public void setAccountMap(TreeMap<String, String> accountMap) {
-        this.accountMap = accountMap;
+    public static void deleteAccount (String username) {
+        UserManager.delete(username);
     }
-    public  void register(String username, String password){
-        boolean check = accountMap.containsKey(username);
-        if (!check){
-            accountMap.put(username,password);
-        } else {
-            System.out.println("Tên đăng nhập này đã có người sử dụng ,vui lòng thử lại tên khác");
-        }
-
-    }
-    public boolean login(String username, String password){
-        boolean check =accountMap.containsKey(username);
-        if (check){
-            if (accountMap.get(username)==password){
-                System.out.println("Đăng nhập thành công: ");
-                return true;
+    public static void accountManage(String username) {
+        int choice = -1;
+        while (choice != 0) {
+            MenuManager.showAccountMenu();
+            Scanner scanner = new Scanner(System.in);
+            choice = scanner.nextInt();
+            switch (choice) {
+                case 1:
+                    UserManager.getUserInformation(username);
+                    break;
+                case 2:
+                    UserManager.edit(username, UserManager.createUse());
+                    break;
+                case 3:
+                    UserManager.delete(username);
+                    break;
+                case 4:
+                    System.exit(0);
             }
-            System.out.println("Sai mật khẩu: ");
-            return false;
         }
-        System.out.println("Tài khoản không tồn tại");
-        return false;
     }
-
-    public void deleteByUsername(String username) {
-        if (accountMap.containsKey(username)) {
-            accountMap.remove(username);
-            System.out.println("Đã xóa thành công " + username);
-        } else System.out.println("Tài khoản không tồn tại: ");
-    }
-//    private  String username;
-//    private String password;
-//
-//    public Account() {
-//    }
-//
-//
-//    public Account(String name, int age, int phoneNumber, String email, String username, String password) {
-//        super(name, age, phoneNumber, email);
-//        this.username = username;
-//        this.password = password;
-//    }
-
 }

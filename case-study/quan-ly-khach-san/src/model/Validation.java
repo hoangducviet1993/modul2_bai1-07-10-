@@ -11,9 +11,10 @@ public class Validation {
 
     public Validation() {
     }
-    public boolean validate(String string, String regex) {
+    public static boolean validate(String string, String regex) {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(string);
         return matcher.matches();
     }
+
 }

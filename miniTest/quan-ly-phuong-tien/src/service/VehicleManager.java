@@ -55,6 +55,11 @@ public class VehicleManager implements VehicleService<Vehicle> {
         }
     }
 
+    @Override
+    public void sort() {
+
+    }
+
 
     @Override
     public void print() {
