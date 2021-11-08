@@ -10,8 +10,8 @@ import java.util.Scanner;
 public class UserManager {
     private static ArrayList<User> userList;
 
-    public UserManager() {
-        this.userList = new ArrayList<>();
+    private UserManager() {
+
     }
 
     public static ArrayList<User> getUserList() {
@@ -102,7 +102,7 @@ public class UserManager {
     }
     public static void getUserInformation(String username) {
         if (findIndexByUserName(username) != -1) {
-            System.out.println();
+//            System.out.println();
 //            System.out.println("____________________________*** THÔNG TIN TÀI KHOẢN ***____________________________");
 //            System.out.printf("%-20s %-20s %-25s %n", "Họ và tên", "Tuổi", "Số điện thoại", "Email");
 //            System.out.println();

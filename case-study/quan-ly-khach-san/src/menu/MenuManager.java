@@ -18,18 +18,20 @@ public class MenuManager {
         String password = scanner.nextLine();
     }
 
-    public static void showManageMenu(){
+    public static void showManageMenu() {
         System.out.println("1. Quản lý tài khoản: ");
         System.out.println("2. QUản lý phòng: ");
         System.out.println("3. QUản lý hóa đơn: ");
         System.out.println("0. Thoát! ");
     }
+
     public static void showAccountMenu() {
         System.out.println("1. Xem thông tin tài khoản: ");
         System.out.println("2. Sửa thông tin cá nhân: ");
         System.out.println("3. Xóa tài khoản: ");
         System.out.println("0. Thoát! ");
     }
+
     public static void showRoomMenu() {
         System.out.println("1. Hiển thị danh sách phòng: ");
         System.out.println("2. Check-in: ");
@@ -40,8 +42,10 @@ public class MenuManager {
         System.out.println("7. Danh sách phòng còn trống: ");
         System.out.println("8. Tìm kiếm thông tin theo số phòng: ");
         System.out.println("9. Tìm phòng theo giá: ");
+        System.out.println("10. Xóa Phòng: ");
         System.out.println("0. Thoát! ");
     }
+
     public static void showReceiptMenu() {
         System.out.println("1. In và tính hóa đơn theo khoảng thời gian: ");
         System.out.println("2. Sửa thông tin hóa đơn(Theo só hóa đơn):");

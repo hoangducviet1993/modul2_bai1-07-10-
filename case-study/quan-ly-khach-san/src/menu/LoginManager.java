@@ -28,7 +28,7 @@ public class LoginManager {
                int choice =-1;
                while (choice!=0){
                    MenuManager.showManageMenu();
-                   choice = scanner.nextInt();
+                   choice = Account.choiceExceptionHandling();
                    switch (choice){
                        case 1:
                            Account.accountManage(username);

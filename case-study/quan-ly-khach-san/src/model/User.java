@@ -59,13 +59,10 @@ public class User {
 
     @Override
     public String toString() {
-//        return String.format("%-20s %-10d %-20s %-25s", name, phoneNumber, email);
         return "Admin{" +
                 ", name='" + name + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
                 '}';
     }
 }

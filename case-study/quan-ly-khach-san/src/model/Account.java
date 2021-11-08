@@ -3,6 +3,7 @@ package model;
 import menu.MenuManager;
 import service.manage.UserManager;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Account {
@@ -15,15 +16,11 @@ public class Account {
         int index = UserManager.findIndexByUserName(username);
         return UserManager.getUserList().get(index).getPassword().equals(password);
     }
-    public static void deleteAccount (String username) {
-        UserManager.delete(username);
-    }
     public static void accountManage(String username) {
         int choice = -1;
         while (choice != 0) {
             MenuManager.showAccountMenu();
-            Scanner scanner = new Scanner(System.in);
-            choice = scanner.nextInt();
+            choice = choiceExceptionHandling();
             switch (choice) {
                 case 1:
                     UserManager.getUserInformation(username);
@@ -34,9 +31,22 @@ public class Account {
                 case 3:
                     UserManager.delete(username);
                     break;
-                case 4:
+                case 0:
                     System.exit(0);
             }
         }
     }
+    public static int choiceExceptionHandling() {
+        Scanner scanner = new Scanner(System.in);
+        int choice = -1;
+        try {
+            choice = scanner.nextInt();
+        } catch (InputMismatchException exception) {
+            System.err.println("Nhập số nguyên!");
+        } finally {
+            scanner.nextLine();
+        }
+        return choice;
+    }
+
 }
