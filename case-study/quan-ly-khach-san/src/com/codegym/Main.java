@@ -1,5 +1,6 @@
 package com.codegym;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,7 +14,7 @@ import service.manage.UserManager;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         int choice = -1;
         while (choice != 0) {
             Scanner scanner = new Scanner(System.in);

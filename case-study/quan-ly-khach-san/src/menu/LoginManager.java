@@ -4,12 +4,13 @@ import model.Account;
 import model.User;
 import service.manage.UserManager;
 
+import java.text.ParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class LoginManager {
 
-    public static void loginToSystem(){
+    public static void loginToSystem() throws ParseException {
     Scanner scanner = new Scanner(System.in);
     System.out.print("Nhập tên đăng nhập: ");
     String username = scanner.nextLine();
@@ -37,7 +38,7 @@ public class LoginManager {
                             MenuRoom.roomManage(username);
                             break;
                        case 3:
-
+                            MenuReceipt.receiptManager(username);
                            break;
                        case 0:
                            System.exit(0);

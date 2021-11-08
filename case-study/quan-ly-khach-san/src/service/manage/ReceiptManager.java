@@ -16,6 +16,13 @@ public class ReceiptManager implements ReceiptService<Receipt> {
     private ReceiptManager() {
     }
 
+    private static ReceiptManager receiptInstance;
+
+    public static ReceiptManager getReceiptInstance() {
+        if (receiptInstance == null) receiptInstance = new ReceiptManager();
+        return receiptInstance;
+    }
+
     public static ArrayList<Receipt> getReceiptList() {
         if (receiptList == null) {
             receiptList = new ArrayList<>();
@@ -128,16 +135,34 @@ public class ReceiptManager implements ReceiptService<Receipt> {
         return new Receipt(receiptId, roomId, customerName, staffName, checkInTime, checkOutTime);
     }
 
-    public void displayReceiptListByDay(String startDay, String endDay) throws ParseException {
+    public void displayReceiptListByDay() throws ParseException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nhập ngày bắt đầu (định dạng dd/MM/yyyy): ");
+        String startTime = scanner.nextLine();
+        while (!Validation.validate(startTime, Validation.DATE_REGEX)) {
+            System.out.println("Ngày không hợp lệ. Vui lòng nhập lại.");
+            startTime = scanner.nextLine();
+        }
+        System.out.println("Nhập ngày kết thúc (định dạng dd/MM/yyyy): ");
+        String endTime = scanner.nextLine();
+        while (!Validation.validate(endTime, Validation.DATE_REGEX) || DateCalculator.dateCompare(startTime, endTime) > 0) {
+            if (!Validation.validate(endTime, Validation.DATE_REGEX)) {
+                System.err.println("Ngày không hợp lệ. Vui lòng nhập lại.");
+            }
+            if (DateCalculator.dateCompare(startTime, endTime) > 0) {
+                System.err.println("Ngày kết thúc phải sau ngày bắt đầu!");
+            }
+            startTime = scanner.nextLine();
+        }
         Collections.sort(receiptList);
         int sumTotal = 0;
         System.out.println();
-        System.out.println("__________________*** DANH SÁCH HÓA ĐƠN TỪ NGÀY " + startDay + " ĐẾN NGÀY " + endDay + " ***_________________");
+        System.out.println("__________________*** DANH SÁCH HÓA ĐƠN TỪ NGÀY " + startTime + " ĐẾN NGÀY " + endTime + " ***_________________");
 //        System.out.printf("%-15s %-20s %-20s %-15s %-15s %-15s %n", "Số hóa đơn", "Khách hàng", "Nhân viên", "Ngày check-in", "Ngày check-out", "Tổng tiền");
         for (int i = 0; i < receiptList.size(); i++) {
             Receipt receipt = receiptList.get(i);
-            int startCompare = DateCalculator.dateCompare(receipt.getCheckOut(), startDay);
-            int endCompare = DateCalculator.dateCompare(receipt.getCheckOut(), endDay);
+            int startCompare = DateCalculator.dateCompare(receipt.getCheckOut(), startTime);
+            int endCompare = DateCalculator.dateCompare(receipt.getCheckOut(), endTime);
             if (startCompare >= 0 && endCompare <= 0) {
                 sumTotal += receipt.getTotalPrice();
                 System.out.println(receipt);
