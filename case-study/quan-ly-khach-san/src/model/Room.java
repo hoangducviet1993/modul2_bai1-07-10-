@@ -8,30 +8,31 @@ public class Room implements Comparable<Room> {
     public static final String READY = "Phòng trống: ";
 
     private int roomId;
-    private String Status;
+    private int price;
+    private String status;
     private int numberOfBeds;
     private int numberOfToilet;
-    private double price;
     private String lastCheckIn;
     private String lastCheckOut;
 
     public Room() {
     }
 
-    public Room(int roomId, String status, int numberOfBeds, int numberOfToilet, double price) {
+    public Room(int roomId, int price, String status, int numberOfBeds, int numberOfToilet) {
         this.roomId = roomId;
-        String Status = status;
+        this.price = price;
+        this.status = status;
         this.numberOfBeds = numberOfBeds;
         this.numberOfToilet = numberOfToilet;
-        this.price = price;
+
     }
 
-    public Room(int roomId, String status, int numberOfBeds, int numberOfToilet, double price, String lastCheckIn, String lastCheckOut) {
+    public Room(int roomId, int price, String status, int numberOfBeds, int numberOfToilet, String lastCheckIn, String lastCheckOut) {
         this.roomId = roomId;
-        Status = status;
+        this.price = price;
+        this.status = status;
         this.numberOfBeds = numberOfBeds;
         this.numberOfToilet = numberOfToilet;
-        this.price = price;
         this.lastCheckIn = lastCheckIn;
         this.lastCheckOut = lastCheckOut;
     }
@@ -45,11 +46,11 @@ public class Room implements Comparable<Room> {
     }
 
     public String getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(String status) {
-        Status = status;
+        status = status;
     }
 
     public int getNumberOfBeds() {
@@ -68,11 +69,11 @@ public class Room implements Comparable<Room> {
         this.numberOfToilet = numberOfToilet;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -113,15 +114,11 @@ public class Room implements Comparable<Room> {
             return true;
         } return false;
     }
-    @Override
+
+
+        @Override
     public String toString() {
-        return "Room{" +
-                "roomId=" + roomId +
-                ", Status='" + Status + '\'' +
-                ", numberOfBeds=" + numberOfBeds +
-                ", numberOfToilet=" + numberOfToilet +
-                ", price=" + price +
-                '}';
+        return String.format("%-10d %-10d %-20s %-15d %-15d", roomId, price, status, numberOfBeds, numberOfToilet);
     }
 
     @Override

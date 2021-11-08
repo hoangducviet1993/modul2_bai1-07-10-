@@ -4,11 +4,12 @@ import model.Account;
 import service.manage.RoomManager;
 import service.manage.UserManager;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class MenuRoom {
 
-    public static void roomManage(String username) {
+    public static void roomManage(String username) throws IOException {
         UserManager.getUserList();
         RoomManager.getRoomList();
         int choice = -1;

@@ -50,7 +50,7 @@ public class MenuManager {
         System.out.println("1. In và tính hóa đơn theo khoảng thời gian: ");
         System.out.println("2. Sửa thông tin hóa đơn(Theo só hóa đơn):");
         System.out.println("3. Xóa hóa đơn: ");
-        System.out.println("4. Xuất file hóa đơn: ");
+        System.out.println("4. In danh sách hóa đơn: ");
         System.out.println("0. Thoát! ");
     }
 }

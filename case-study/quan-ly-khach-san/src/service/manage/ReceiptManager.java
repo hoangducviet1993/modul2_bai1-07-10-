@@ -4,9 +4,7 @@ import model.Receipt;
 import model.Validation;
 import service.ReceiptService;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.text.ParseException;
 import java.util.*;
 
@@ -26,9 +24,9 @@ public class ReceiptManager implements ReceiptService<Receipt> {
     public static ArrayList<Receipt> getReceiptList() {
         if (receiptList == null) {
             receiptList = new ArrayList<>();
-            receiptList.add(new Receipt("000001", 101, "Nguyễn văn A", "Hoàng Đức Việt", "07/11/2021", "10/11/2021"));
-            receiptList.add(new Receipt("000002", 102, "Nguyễn văn B", "Hoàng Đức Việt", "07/11/2021", "10/11/2021"));
-            receiptList.add(new Receipt("000003", 103, "Nguyễn văn C", "Hoàng Đức Việt", "07/11/2021", "10/11/2021"));
+            receiptList.add(new Receipt("000001",  "Nguyễn văn A", "Hoàng Đức Việt", "07/11/2021", "10/11/2021",101));
+            receiptList.add(new Receipt("000002", "Nguyễn văn B", "Hoàng Đức Việt", "07/11/2021", "10/11/2021",102));
+            receiptList.add(new Receipt("000003",  "Nguyễn văn C", "Hoàng Đức Việt", "07/11/2021", "10/11/2021",103));
 
         }
         return receiptList;
@@ -132,10 +130,10 @@ public class ReceiptManager implements ReceiptService<Receipt> {
             checkInTime = scanner.nextLine();
         }
 
-        return new Receipt(receiptId, roomId, customerName, staffName, checkInTime, checkOutTime);
+        return new Receipt(receiptId, customerName, staffName, checkInTime, checkOutTime, roomId);
     }
 
-    public void displayReceiptListByDay() throws ParseException {
+    public void displayReceiptListByDay() throws ParseException, IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập ngày bắt đầu (định dạng dd/MM/yyyy): ");
         String startTime = scanner.nextLine();
@@ -175,19 +173,39 @@ public class ReceiptManager implements ReceiptService<Receipt> {
 
     public static void writeReceiptToFile() throws IOException, ParseException {
         Collections.sort(receiptList);
-        FileWriter fileWriter = new FileWriter("src/service/manage.csv");
+        FileWriter fileWriter = new FileWriter("src/service/receiveManageFile.csv");
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        String str = "Số hóa đơn,Tên khách hàng,Tên nhân viên,Giờ check-in,Giờ check-out,Tổng số tiền";
+        StringBuilder str = new StringBuilder("Số hóa đơn,Tên khách hàng,Tên nhân viên,Số phòng, Giờ check-in,Giờ check-out,Tổng số tiền");
         for (Receipt receipt : receiptList) {
-            str += "\n";
-            str += receipt.getReceiptId() + ",";
-            str += receipt.getCustomerName() + ",";
-            str += receipt.getStaffName() + ",";
-            str += receipt.getCheckIn() + ",";
-            str += receipt.getCheckOut() + ",";
-            str += receipt.getTotalPrice();
+            str.append("\n");
+            str.append(receipt.getReceiptId()).append(",");
+            str.append(receipt.getCustomerName()).append(",");
+            str.append(receipt.getStaffName()).append(",");
+            str.append(receipt.getRoomId()).append(",");
+            str.append(receipt.getCheckIn()).append(",");
+            str.append(receipt.getCheckOut()).append(",");
+            str.append(receipt.getTotalPrice());
         }
-        bufferedWriter.write(str);
+        bufferedWriter.write(str.toString());
         bufferedWriter.close();
+    }
+
+    public static void readReceiptFromFile() throws IOException {
+        receiptList = new ArrayList<>();
+        FileReader fileReader = new FileReader("src/service/receiveManageFile.csv");
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        String content = bufferedReader.readLine();
+        while ((content = bufferedReader.readLine()) != null) {
+            String[] array = content.split(",");
+            String receiptId = array[0];
+            String customerName = array[1];
+            String staffName = array[2];
+            int roomId = Integer.parseInt(array[3]);
+            String checkInTime = array[4];
+            String checkOutTime = array[5];
+            receiptList.add(new Receipt(receiptId, customerName, staffName, checkInTime, checkOutTime, roomId));
+        }
+        bufferedReader.close();
+        fileReader.close();
     }
 }

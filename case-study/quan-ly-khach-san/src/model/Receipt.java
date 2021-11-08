@@ -3,6 +3,7 @@ package model;
 import service.manage.DateCalculator;
 import service.manage.RoomManager;
 
+import java.io.IOException;
 import java.text.ParseException;
 
 public class Receipt implements Comparable<Receipt> {
@@ -17,7 +18,7 @@ public class Receipt implements Comparable<Receipt> {
     public Receipt() {
     }
 
-    public Receipt(String receiptId, int roomId, String customerName, String staffName, String checkIn, String checkOut) {
+    public Receipt(String receiptId, String customerName, String staffName, String checkIn, String checkOut, int roomId) {
         this.receiptId = receiptId;
         this.roomId = roomId;
         this.customerName = customerName;
@@ -73,21 +74,20 @@ public class Receipt implements Comparable<Receipt> {
     public void setCheckOut(String checkOut) {
         this.checkOut = checkOut;
     }
-    public long getTotalPrice() throws ParseException {
+    public long getTotalPrice() throws ParseException ,IOException {
         int roomPrice = (int) RoomManager.getRoomList().get(RoomManager.findIndexById(roomId)).getPrice();
         long dateCal = DateCalculator.dateCalculator(checkIn, checkOut);
         return roomPrice * (dateCal + 1);
     }
     @Override
     public String toString() {
-        return "Receipt{" +
-                "receiptId='" + receiptId + '\'' +
-                ", roomId=" + roomId +
-                ", customerName='" + customerName + '\'' +
-                ", staffName='" + staffName + '\'' +
-                ", checkIn=" + checkIn +
-                ", checkOut=" + checkOut +
-                '}';
+        String str = null;
+        try {
+            str = String.format("%-15s %-20s %-20s %-15s %-15s %-15d", receiptId, customerName, staffName, checkIn, checkOut, getTotalPrice());
+        } catch (ParseException | IOException e) {
+            e.printStackTrace();
+        }
+        return str;
     }
 
     @Override

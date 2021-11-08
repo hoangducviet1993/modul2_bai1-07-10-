@@ -3,6 +3,7 @@ package service.manage;
 import model.Room;
 import model.User;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.InputMismatchException;
@@ -18,9 +19,9 @@ public class RoomManager {
     public static ArrayList<Room> getRoomList() {
         if (roomList == null) {
             roomList = new ArrayList<>();
-            roomList.add(new Room(101, Room.READY, 2, 1, 3000));
-            roomList.add(new Room(102, Room.READY, 1, 1, 2000));
-            roomList.add(new Room(103, Room.READY, 2, 2, 5000));
+            roomList.add(new Room(101, 10000, Room.READY, 1, 2));
+            roomList.add(new Room(102, 10000, Room.READY, 1, 1));
+            roomList.add(new Room(103, 20000, Room.READY, 2, 2));
         }
         return roomList;
     }
@@ -29,8 +30,9 @@ public class RoomManager {
         RoomManager.roomList = roomList;
     }
 
-    public static void add(Room room) {
+    public static void add(Room room) throws IOException {
         roomList.add(room);
+        writeRoomToFile();
     }
 
     public static int findIndexById(int id) {
@@ -42,7 +44,7 @@ public class RoomManager {
         return -1;
     }
 
-    public static void edit() {
+    public static void edit() throws IOException {
         getRoomList();
         int roomId = 0;
         System.out.print("Nhập số phòng muốn sửa: ");
@@ -63,12 +65,13 @@ public class RoomManager {
         System.out.println("Cập nhật thành công!!!");
     }
 
-    public static void delete(int id) {
+    public static void delete(int id) throws IOException {
         if (findIndexById(id) != -1) {
             roomList.remove(findIndexById(id));
         } else {
             System.out.println("Không có tài khoản cần xóa: ");
         }
+        writeRoomToFile();
     }
 
     public static Room createRoom() {
@@ -128,7 +131,7 @@ public class RoomManager {
                 System.err.println("Error!!");
             }
         }
-        return new Room(roomId, Room.READY, numberOfBed, numberOfToilet, price);
+        return new Room(roomId, price, Room.READY, numberOfBed, numberOfToilet);
     }
 
     public static void displayListRoom() {
@@ -223,4 +226,41 @@ public class RoomManager {
 
     }
 
+
+
+    public static void writeRoomToFile() throws IOException{
+        Collections.sort(roomList);
+        FileWriter fileWriter = new FileWriter("src/service/roomManageFile.csv");
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+        StringBuilder str = new StringBuilder("Số phòng,Giá thuê phòng,Trạng thái hiện tại,Số giường ngủ, Số nhà vệ sinh");
+        for (Room room : roomList) {
+            str.append("\n").append(room.getRoomId()).append(",");
+            str.append(room.getPrice()).append(",");
+            str.append(room.getStatus()).append(",");
+            str.append(room.getNumberOfBeds()).append(",");
+            str.append(room.getNumberOfToilet());
+        }
+        bufferedWriter.write(str.toString());
+        bufferedWriter.close();
+    }
+
+    public static void readRoomFromFile() throws IOException {
+        roomList = new ArrayList<>();
+        FileReader fileReader = new FileReader("src/service/roomManageFile.csv");
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        String content = bufferedReader.readLine();
+        while ((content = bufferedReader.readLine()) != null) {
+            String[] array = content.split(",");
+            int roomID = Integer.parseInt(array[0]);
+            int price = Integer.parseInt(array[1]);
+            String status = array[2];
+            int numberOfBed = Integer.parseInt(array[3]);
+            int numberOfToilet = Integer.parseInt(array[4]);
+            roomList.add(new Room(roomID, price, status, numberOfBed, numberOfToilet));
+        }
+        bufferedReader.close();
+        fileReader.close();
+    }
+
+//
 }

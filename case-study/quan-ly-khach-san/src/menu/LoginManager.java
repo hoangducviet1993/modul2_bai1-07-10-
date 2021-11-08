@@ -4,13 +4,14 @@ import model.Account;
 import model.User;
 import service.manage.UserManager;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class LoginManager {
 
-    public static void loginToSystem() throws ParseException {
+    public static void loginToSystem() throws ParseException, IOException {
     Scanner scanner = new Scanner(System.in);
     System.out.print("Nhập tên đăng nhập: ");
     String username = scanner.nextLine();
