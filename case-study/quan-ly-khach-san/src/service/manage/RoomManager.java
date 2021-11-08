@@ -213,17 +213,14 @@ public class RoomManager {
     }
 
     public static void getRoomByPrice(int minPrice, int maxPrice) {
-//        System.out.println();
-//        System.out.println("____________________***  DANH SÁCH PHÒNG PHÙ HỢP  ***____________________");
-//        System.out.printf("%-10s %-10s %-20s %-15s %-15s %n", "Số phòng", "Giá phòng", "Trạng thái phòng", "Số giường ngủ", "Số nhà VS");
-//        System.out.println();
+
         for (Room room : roomList) {
             if (room.getPrice() >= minPrice && room.getPrice() <= maxPrice) {
                 System.out.println(room);
             }
         }
         System.out.println("_________________________________________________________________________");
-//        System.out.println();
+
     }
 
 }
