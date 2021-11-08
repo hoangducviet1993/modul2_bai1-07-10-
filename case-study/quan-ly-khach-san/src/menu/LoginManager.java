@@ -34,9 +34,10 @@ public class LoginManager {
                            Account.accountManage(username);
                            break;
                        case 2:
-
+                            MenuRoom.roomManage(username);
                             break;
                        case 3:
+
                            break;
                        case 0:
                            System.exit(0);

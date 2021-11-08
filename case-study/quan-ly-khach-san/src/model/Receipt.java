@@ -1,23 +1,45 @@
 package model;
 
-public class Receipt {
+import service.manage.DateCalculator;
+import service.manage.RoomManager;
+
+import java.text.ParseException;
+
+public class Receipt implements Comparable<Receipt> {
+    private String receiptId ;
+    private int roomId;
     private String customerName;
     private String staffName;
-    private double checkIn;
-    private double checkOut;
-    private double totalPrice =0;
-    private int receiptId = 0 ;
+    private String checkIn;
+    private String checkOut;
+
 
     public Receipt() {
     }
 
-    public Receipt(String customerName, String staffName, double checkIn, double checkOut, double totalPrice, int receiptId) {
+    public Receipt(String receiptId, int roomId, String customerName, String staffName, String checkIn, String checkOut) {
+        this.receiptId = receiptId;
+        this.roomId = roomId;
         this.customerName = customerName;
         this.staffName = staffName;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
-        this.totalPrice = totalPrice;
+    }
+
+    public String getReceiptId() {
+        return receiptId;
+    }
+
+    public void setReceiptId(String receiptId) {
         this.receiptId = receiptId;
+    }
+
+    public int getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
     }
 
     public String getCustomerName() {
@@ -36,47 +58,42 @@ public class Receipt {
         this.staffName = staffName;
     }
 
-    public double getCheckIn() {
+    public String getCheckIn() {
         return checkIn;
     }
 
-    public void setCheckIn(double checkIn) {
+    public void setCheckIn(String checkIn) {
         this.checkIn = checkIn;
     }
 
-    public double getCheckOut() {
+    public String getCheckOut() {
         return checkOut;
     }
 
-    public void setCheckOut(double checkOut) {
+    public void setCheckOut(String checkOut) {
         this.checkOut = checkOut;
     }
-
-    public double getTotalPrice() {
-        return totalPrice;
+    public long getTotalPrice() throws ParseException {
+        int roomPrice = (int) RoomManager.getRoomList().get(RoomManager.findIndexById(roomId)).getPrice();
+        long dateCal = DateCalculator.dateCalculator(checkIn, checkOut);
+        return roomPrice * (dateCal + 1);
     }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    public int getReceiptId() {
-        return receiptId;
-    }
-
-    public void setReceiptId(int receiptId) {
-        this.receiptId = receiptId;
-    }
-
     @Override
     public String toString() {
         return "Receipt{" +
-                "customerName='" + customerName + '\'' +
+                "receiptId='" + receiptId + '\'' +
+                ", roomId=" + roomId +
+                ", customerName='" + customerName + '\'' +
                 ", staffName='" + staffName + '\'' +
                 ", checkIn=" + checkIn +
                 ", checkOut=" + checkOut +
-                ", totalPrice=" + totalPrice +
-                ", receiptId=" + receiptId +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Receipt o) {
+        if (getReceiptId().compareTo(o.getReceiptId()) > 0) return 1;
+        else if (getReceiptId().compareTo(o.getReceiptId()) < 0) return -1;
+        return 0;
     }
 }

@@ -8,6 +8,7 @@ public class Validation {
     public static final String PASSWORD_REGEX = "^[a-zA-Z0-9]{8,16}$";
     public static final String PHONE_NUMBER_REGEX = "0[35789][0-9]{8}";
     public static final String EMAIL_REGEX = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+    public static final String DATE_REGEX = "^\\d{2}/\\d{2}/\\d{4}$";
 
     public Validation() {
     }

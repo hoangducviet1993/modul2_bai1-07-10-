@@ -126,7 +126,9 @@ public class Room implements Comparable<Room> {
 
     @Override
     public int compareTo(Room o) {
-        return Integer.compare(getRoomId() - o.getRoomId(), 0);
+        if (getRoomId() - o.getRoomId() > 0) return 1;
+        else if (getRoomId() - o.getRoomId() < 0) return -1;
+        return 0;
 
     }
 }

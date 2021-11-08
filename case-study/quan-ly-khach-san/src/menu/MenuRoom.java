@@ -4,6 +4,8 @@ import model.Account;
 import service.manage.RoomManager;
 import service.manage.UserManager;
 
+import java.util.Scanner;
+
 public class MenuRoom {
 
     public static void roomManage(String username) {
@@ -18,11 +20,13 @@ public class MenuRoom {
                     RoomManager.displayListRoom();
                     break;
                 case 2:
-
+                    System.err.println("Chưa có chức năng này");
                     break;
                 case 3:
+                    System.err.println("Chưa có chức năng này");
                     break;
                 case 4:
+                    System.err.println("Chưa có chức năng này");
                     break;
                 case 5:
                     RoomManager.add(RoomManager.createRoom());
@@ -40,7 +44,10 @@ public class MenuRoom {
                         RoomManager.findInformationByPrice();
                     break;
                 case 10:
-                    RoomManager.delete();
+                    Scanner scanner= new Scanner(System.in);
+                    System.out.println("Nhập Id phòng cần xóa: ");
+                    int id = scanner.nextInt();
+                    RoomManager.delete(id);
                     break;
                 case 0:
                     System.exit(0);
