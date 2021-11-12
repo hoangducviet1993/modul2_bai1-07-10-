@@ -1,13 +1,18 @@
 package com.codegym;
 
+<<<<<<< HEAD
 import create.Validation;
 import menu.ShowMenu;
 import service.ContactsManage;
+=======
+import menu.ShowMenu;
+>>>>>>> origin/master
 
 import java.util.Scanner;
 
 public class Main {
     public static final Scanner SCANNER = new Scanner(System.in);
+<<<<<<< HEAD
 
     public static void main(String[] args) {
 
@@ -38,5 +43,10 @@ public class Main {
             }
         }
 
+=======
+    public static void main(String[] args) {
+        ShowMenu.showMenuContacts();
+        
+>>>>>>> origin/master
     }
 }

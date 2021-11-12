@@ -1,7 +1,6 @@
 package create;
 
 import model.Contacts;
-
 import java.util.Scanner;
 
 public class CreateInformation {
@@ -49,7 +48,10 @@ public class CreateInformation {
         return email;
     }
 
+
     public static Contacts createUser() {
+
+
         String phoneNumber = createPhoneNumber();
         System.out.print("Nhập nhóm:");
         String group = SCANNER.nextLine();
@@ -62,6 +64,7 @@ public class CreateInformation {
         String birthday = createBirthDay();
         String email = createEmail();
         return new Contacts(phoneNumber, group, name, gentle, address, birthday, email);
+
     }
 
 }
