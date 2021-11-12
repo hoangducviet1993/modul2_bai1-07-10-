@@ -19,9 +19,9 @@ public class RoomManager {
     public static ArrayList<Room> getRoomList() {
         if (roomList == null) {
             roomList = new ArrayList<>();
-            roomList.add(new Room(101, 10000, Room.READY, 1, 2));
-            roomList.add(new Room(102, 10000, Room.READY, 1, 1));
-            roomList.add(new Room(103, 20000, Room.READY, 2, 2));
+//            roomList.add(new Room(101, 10000, Room.READY, 1, 2));
+//            roomList.add(new Room(102, 10000, Room.READY, 1, 1));
+//            roomList.add(new Room(103, 20000, Room.READY, 2, 2));
         }
         return roomList;
     }
@@ -136,9 +136,15 @@ public class RoomManager {
 
     public static void displayListRoom() {
         Collections.sort(roomList);
+        System.out.println();
+        System.out.println("____________________***  DANH SÁCH TOÀN BỘ PHÒNG  ***_____________________");
+        System.out.printf("%-10s %-10s %-20s %-15s %-15s %n", "Số phòng", "Giá phòng", "Trạng thái phòng", "Số giường ngủ", "Số nhà VS");
+        System.out.println();
         for (Room room : roomList) {
             System.out.println(room);
         }
+        System.out.println("_________________________________________________________________________");
+        System.out.println();
 
     }
 
